@@ -1,30 +1,30 @@
 def solution(A):
-    N = len(A)  # number of boxes
-    moves = 0  # initialize the number of moves
+    N = len(A)  # Number of boxes
+    moves = 0   # Initialize the number of moves
 
-    for i in range(N):
-        # calculate the difference between the number of bricks and 10
-        diff = A[i] - 10
-
-        if diff > 0:
-            # if the difference is positive, we need to move bricks
-            if i == 0:
-                # if the box is the first one, move the excess bricks to the right
-                A[i + 1] += diff
-            elif i == N - 1:
-                # if the box is the last one, move the excess bricks to the left
-                A[i - 1] += diff
-            else:
-                # if the box is in between, move the excess bricks to the left if the box on the left has fewer bricks, otherwise move them to the right
-                if A[i - 1] < A[i + 1]:
-                    A[i - 1] += diff
-                else:
-                    A[i + 1] += diff
-
-            # increment the number of moves
-            moves += diff
-        elif diff < 0:
-            # if the difference is negative, it means there are not enough bricks in the box
-            return -1
-
+    # Iterate through each box except the last one
+    for i in range(N - 1):
+        # Calculate the excess bricks in the current box
+        excess_bricks = A[i] - 10
+        
+        # If there are excess bricks, redistribute them to the adjacent boxes
+        if excess_bricks > 0:
+            # Move excess bricks to the adjacent box on the right
+            A[i + 1] += excess_bricks
+            
+            # Increment the number of moves by the number of excess bricks moved
+            moves += excess_bricks
+        
+            # Set the current box to have exactly 10 bricks
+            A[i] = 10
+        
+    # Check if the last box has exactly 10 bricks
+    if A[N - 1] != 10:
+        return -1  # If not, return -1 since it's not possible to achieve the target distribution
+    
     return moves
+
+# Test cases
+print(solution([7, 15, 10, 8]))  # Output: 7
+print(solution([11, 10, 8, 12, 8, 10, 11]))  # Output: 6
+print(solution([7, 14, 10]))  # Output: -1

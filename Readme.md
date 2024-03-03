@@ -1,6 +1,8 @@
 # set up
    run git clone git@github.com:Monica-mwangi/Toy-problems-week-one-challenge.git
+
    run pipenv install on your visual studio code terminal
+   
    run pipenv shell to start working on your visual studio
 
  # Challenge one

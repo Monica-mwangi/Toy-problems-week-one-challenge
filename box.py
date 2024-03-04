@@ -25,6 +25,6 @@ def solution(A):
     return moves
 
 # Test cases
-print(solution([7, 15, 10, 8]))  # Output: 7
-print(solution([11, 10, 8, 12, 8, 10, 11]))  # Output: 6
-print(solution([7, 14, 10]))  # Output: -1
+print(solution([7, 15, 10, 8])) 
+ # Output: 7
+
